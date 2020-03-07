@@ -24,7 +24,7 @@ export function app() {
     const response = await fetch(
       'https://thesimpsonsquoteapi.glitch.me/quotes'
     );
-    const quote = (await response.json())[0];
+    const [quote] = await response.json();
     section.innerHTML = '';
     section.appendChild(createElement('p', { innerText: quote.quote }));
     section.appendChild(createElement('p', { innerText: quote.character }));
