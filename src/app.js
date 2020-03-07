@@ -1,6 +1,7 @@
 import './app.scss';
 import { createElement } from './lib/dom';
 import { title } from './components/title';
+import { createNewQuoteButton } from './components/button';
 
 export function app() {
   const header = createElement('header', {
@@ -10,14 +11,17 @@ export function app() {
     className: 'main'
   });
   const titleElement = title('Simpsons Quotes');
+  const showButton = createNewQuoteButton();
 
   const quote = fetchData();
   const quoteElement = createElement('div', {
     className: 'quote'
   });
+
   quoteElement.appendChild(document.createTextNode(quote.quote));
   header.appendChild(titleElement);
   main.appendChild(quoteElement);
+  main.appendChild(showButton);
 
   return [header, main];
 }
