@@ -1,0 +1,17 @@
+@use "./theme";
+// @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap'); importiert schriftart
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: theme.$background-color;
+  height: 100vh;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
