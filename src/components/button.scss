@@ -1,0 +1,15 @@
+@use "../theme";
+
+.showNewQuoteButton {
+  background-color: theme.$secondary-color;
+  border: 1px solid theme.$primary-color;
+  display: inline-block;
+  cursor: pointer;
+  color: theme.$background-color;
+  font-size: 15px;
+  padding: 10px 25px;
+  text-decoration: none;
+
+  margin: 10px;
+  outline: none;
+}
