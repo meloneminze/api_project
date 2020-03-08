@@ -10,32 +10,30 @@ export function app() {
   const main = createElement('main', {
     className: 'main'
   });
-  const titleElement = title('Simpsons Quotes');
-  const showButton = createNewQuoteButton();
 
-  const quote = fetchData();
-  const quoteElement = createElement('div', {
-    className: 'quote'
-  });
-
-  quoteElement.appendChild(document.createTextNode(quote.quote));
+  const titleElement = title('Simspons Quotes');
   header.appendChild(titleElement);
-  main.appendChild(quoteElement);
-  main.appendChild(showButton);
+
+  const section = createElement('div', {});
+  main.appendChild(section);
+
+  const buttonElement = createNewQuoteButton();
+  main.appendChild(buttonElement);
+
+  const loadData = async function() {
+    const response = await fetch(
+      'https://thesimpsonsquoteapi.glitch.me/quotes'
+    );
+    const [quote] = await response.json();
+    section.innerHTML = '';
+    section.appendChild(createElement('p', { innerText: quote.quote }));
+    section.appendChild(createElement('p', { innerText: quote.character }));
+    section.appendChild(createElement('img', { src: quote.image }));
+  };
+
+  buttonElement.addEventListener('click', loadData);
+
+  loadData();
 
   return [header, main];
-}
-
-//Api-Funktion, response holt daten
-async function fetchData() {
-  const response = await fetch(
-    'https://thesimpsonsquoteapi.glitch.me/quotes?count=1',
-    //'https://httpbin.org/status/400',
-    { mode: 'cors' }
-  ); //holt Daten
-  if (response.status > 200) {
-    throw 'Something went wrong';
-  }
-  const [quote] = await response.json();
-  return quote;
 }
