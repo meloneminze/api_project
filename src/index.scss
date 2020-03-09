@@ -1,5 +1,13 @@
 @use "./theme";
 // @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap'); importiert schriftart
+
+@font-face {
+  font-family: 'Simpsonfont';
+  src: url('../assets/Simpsonfont.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
 *,
 *::after,
 *::before {
@@ -7,10 +15,10 @@
 }
 
 body {
-  margin: 0;
+  margin: 10px;
   background-color: theme.$background-color;
   height: 100vh;
-  font-family: 'Press Start 2P', cursive;
+
   font-size: 20px;
   display: flex;
   flex-direction: column;
