@@ -13,12 +13,13 @@ export function app() {
 
   const titleElement = title('Simspons Quotes');
   header.appendChild(titleElement);
-
-  const section = createElement('div', {});
-  main.appendChild(section);
-
   const buttonElement = createNewQuoteButton();
   main.appendChild(buttonElement);
+
+  const section = createElement('div', {
+    className: 'div'
+  });
+  main.appendChild(section);
 
   const loadData = async function() {
     const response = await fetch(
@@ -26,8 +27,8 @@ export function app() {
     );
     const [quote] = await response.json();
     section.innerHTML = '';
-    section.appendChild(createElement('p', { innerText: quote.quote }));
-    section.appendChild(createElement('p', { innerText: quote.character }));
+    section.appendChild(createElement('div', { innerText: quote.quote }));
+    section.appendChild(createElement('div', { innerText: quote.character }));
     section.appendChild(createElement('img', { src: quote.image }));
   };
 
